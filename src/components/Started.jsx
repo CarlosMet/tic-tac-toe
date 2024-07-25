@@ -5,7 +5,7 @@ import Board from './Board'
 import TurnSection from './TurnSection'
 import Modal from './Modal'
 import { TURNS, winner_combs, SCORE } from '../utils/constants'
-
+import confetti from 'canvas-confetti'
 
 
 function Started({playerNames}) {  
@@ -23,6 +23,8 @@ function Started({playerNames}) {
     const scoreFromStorage = window.localStorage.getItem('score')    
     return scoreFromStorage ? JSON.parse(scoreFromStorage) : SCORE
   })
+
+  const [lineCords, setLineCords] = useState([null, null, null])
   
   
 
@@ -32,8 +34,8 @@ function Started({playerNames}) {
       if (
         boardToCheck[a] &&
         boardToCheck[a] === boardToCheck[b] && boardToCheck[a] === boardToCheck[c]
-      ){
-        console.log("ganó" + boardToCheck[a])
+      ){       
+        
         setScore( prevScore => ({
           ...prevScore,
           [boardToCheck[a]]: prevScore[boardToCheck[a]] + 1
@@ -63,7 +65,7 @@ function Started({playerNames}) {
     const newWinner = checkWinner(newBoard)
     if (newWinner){
       setWinner(newWinner)
-      console.log("alguien ganó")
+      confetti()
       
     }else if(checkEndGame(newBoard)){
       setWinner(false)
@@ -86,17 +88,17 @@ function Started({playerNames}) {
 
   return (
     <>
-      <main className='flex flex-col items-center'>
+      <main className='flex flex-col items-center bg-[#0c0c31] h-screen'>
         <Score score = {score} playerNames={playerNames} />
         <h1 className='font-extrabold text-3xl my-6'>Tricky</h1>
         <section className=''>
-          <Board board={board} update={update} />
+          <Board board={board} update={update} winner={winner ? true : false} lineStyles={lineCords} />
         </section>
         <section className=''>
           <TurnSection turn={turn} />
         </section>              
        
-       <Modal restart={restart} winner={winner} />                  
+       {/* <Modal restart={restart} winner={winner} />                   */}
       </main>
     </>
         

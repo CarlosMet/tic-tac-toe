@@ -16,9 +16,9 @@ export default function StartingPage({setPlayerNames, startGame}) {
         startGame()
     }
   return (
-    <main className='flex flex-col items-center justify-center h-screen w-screen starting-page'>
+    <main className='flex flex-col items-center justify-center h-screen w-screen starting-page bg-[#0c0c31]'>
         
-        <div className='flex flex-col justify-center items-center p-4 bg-black/55 [&>*]:bg-transparent'>
+        <div className='flex flex-col justify-center items-center p-4 [&>*]:bg-transparent'>
             <h1 className='mb-10 lg:mb-16 2xl:mb-28 '>TIC TAC TOE</h1>
             <p className='mb-8 lg:mb-12 font-extrabold text-xl'>Enter player names</p>
             <form onSubmit={formSubmit} action="">
