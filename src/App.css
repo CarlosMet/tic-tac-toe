@@ -1,0 +1,11 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #0c0c31;
+  color: #fff;
+}
+.starting-page{
+  background-image: url('https://s3-alpha.figma.com/hub/file/479379372/7e6df39f-585d-4a9e-9bf3-4ef4c00f816b-cover.png');
+  background-size: 100%;
+}
